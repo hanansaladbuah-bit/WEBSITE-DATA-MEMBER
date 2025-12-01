@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Member Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>📊 Member Pro</h2>
+        <a href="dashboard.html" class="menu-item active">
+            <span>🏠</span> Dashboard
+        </a>
+        <a href="members.html" class="menu-item">
+            <span>👥</span> Data Member
+        </a>
+        <a href="add-member.html" class="menu-item">
+            <span>➕</span> Tambah Member
+        </a>
+        <div class="menu-item" onclick="handleLogout()" style="margin-top: auto; cursor: pointer;">
+            <span>🚪</span> Logout
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <h1>Dashboard</h1>
+                <p id="currentDate"></p>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div>
+                    <strong id="userEmail">User</strong>
+                    <p style="font-size: 12px; color: #999;">Administrator</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>TOTAL MEMBER</h3>
+                <div class="number" id="totalMembers">0</div>
+                <div class="change">📈 Member terdaftar</div>
+            </div>
+            <div class="stat-card">
+                <h3>MEMBER AKTIF</h3>
+                <div class="number" id="activeMembers">0</div>
+                <div class="change">✅ Status aktif</div>
+            </div>
+            <div class="stat-card">
+                <h3>MEMBER BARU BULAN INI</h3>
+                <div class="number" id="newMembers">0</div>
+                <div class="change">🎉 Bergabung bulan ini</div>
+            </div>
+            <div class="stat-card">
+                <h3>MEMBER TIDAK AKTIF</h3>
+                <div class="number" id="inactiveMembers">0</div>
+                <div class="change">⚠️ Perlu perhatian</div>
+            </div>
+        </div>
+
+        <!-- Recent Members -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Member Terbaru</h2>
+                <a href="members.html" class="btn btn-primary">Lihat Semua</a>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Telepon</th>
+                            <th>Status</th>
+                            <th>Tanggal Gabung</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentMembersBody">
+                        <tr>
+                            <td colspan="5" class="loading">Memuat data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- JavaScript Files -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
